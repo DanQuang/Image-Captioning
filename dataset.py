@@ -10,10 +10,10 @@ from utils import collate_fn
 
 class Flickr8kDataset(Dataset):
     def __init__(self, txt_file, image_folder, max_length):
-        self.data = pd.read_csv(txt_file, sep= ",", header= True)
+        self.data = pd.read_csv(txt_file)
         self.image_folder = image_folder
         self.transform = transforms.Compose([
-            transforms.Resize(299, 299),
+            transforms.Resize((299, 299)),
             transforms.CenterCrop(299),
             transforms.ToTensor(),
             transforms.Normalize(mean= [0.485, 0.456, 0.406], std= [0.229, 0.224, 0.225])

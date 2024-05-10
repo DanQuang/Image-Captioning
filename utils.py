@@ -25,10 +25,10 @@ def padding(array, max_length, padding_value):
         return array[:max_length]
     
 def collate_fn(batch):
-    batch_image = [data["image"] for data in batch]
+    batch_image = [data["image"].unsqueeze(0) for data in batch]
     batch_caption_ids = [data["caption_ids"] for data in batch]
 
     return {
-         "image": torch.tensor(batch_image),
+         "image": torch.cat(batch_image, dim = 0),
          "caption_ids": torch.tensor(batch_caption_ids)
     }

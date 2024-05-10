@@ -1,6 +1,6 @@
 data:
   txt_file: /content/captions.txt
-  iamge_path: /content/Images
+  image_folder: /content/Images
 
 text_embedding:
   embedding_dim: 256 
