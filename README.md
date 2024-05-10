@@ -11,3 +11,11 @@ To train the Image Captioning model, use the command line:
 ``bash
 python main.py --config config.yaml
 ``
+
+To test the Image Captioning model, go to main.py and command these codes:
+
+```python
+logging.info("Training started...")
+Train_Task(config).train()
+logging.info("Train complete")
+```
