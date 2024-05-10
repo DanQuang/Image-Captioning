@@ -51,14 +51,14 @@ class Load_Data:
     def load_train_dev(self):
         train_loader = DataLoader(
             self.train,
-            batch_size= 64,
+            batch_size= 128,
             shuffle= True,
             collate_fn= collate_fn
         )
 
         dev_loader = DataLoader(
             self.dev,
-            batch_size= 64,
+            batch_size= 128,
             shuffle= False,
             collate_fn= collate_fn
         )
@@ -67,7 +67,7 @@ class Load_Data:
     def load_test(self):
         train_loader = DataLoader(
             self.test,
-            batch_size= 64,
+            batch_size= 128,
             shuffle= False,
             collate_fn= collate_fn
         )

@@ -93,8 +93,6 @@ class Train_Task:
                 for _, item in enumerate(tqdm(dev)):
                     images, captions = item["image"].to(self.device), item["caption_ids"].to(self.device)
 
-                    self.optim.zero_grad()
-
                     output = self.model(images, captions[:,:-1])
                     # outputs: [batch_size, seq_len, vocab_size]
                     output_dim = output.shape[-1] # target_vocab_size
