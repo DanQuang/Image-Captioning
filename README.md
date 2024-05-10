@@ -8,9 +8,9 @@ This Example use `flickr8k` dataset.
 ## Usage
 To train the Image Captioning model, use the command line:
 
-``bash
+```bash
 python main.py --config config.yaml
-``
+```
 
 To test the Image Captioning model, go to main.py and command these codes:
 
