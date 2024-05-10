@@ -16,7 +16,10 @@ class EncoderCNN(nn.Module):
 
     def forward(self, images):
         # images: [batch_size, c, w, h]
-        features, _ = self.inception(images)
+        if self.training:
+            features, _ = self.inception(images)
+        else:
+            features = self.inception(images)
         return self.dropout(self.relu(features))
 
     def setup_model(self):

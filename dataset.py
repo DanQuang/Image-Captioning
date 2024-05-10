@@ -65,9 +65,10 @@ class Load_Data:
         return train_loader, dev_loader
     
     def load_test(self):
-        train_loader = DataLoader(
+        test_loader = DataLoader(
             self.test,
             batch_size= 128,
             shuffle= False,
             collate_fn= collate_fn
         )
+        return test_loader

@@ -28,7 +28,7 @@ class Test_Task:
         self.criterion = nn.CrossEntropyLoss(ignore_index= padding_idx)
 
     def predict(self):
-        test = self.dataloader.load_test()
+        test_loader = self.dataloader.load_test()
         test_image = [data["image_path"] for data in self.dataloader.test]
         test_caption = [data["caption"] for data in self.dataloader.test]
 
@@ -36,6 +36,7 @@ class Test_Task:
 
         if os.path.join(self.save_path, best_model):
             checkpoint = torch.load(os.path.join(self.save_path, best_model))
+            print("Loading best model.....")
             self.model.load_state_dict(checkpoint["model_state_dict"])
 
             
@@ -43,7 +44,7 @@ class Test_Task:
             with torch.inference_mode():
                 epoch_loss = 0
                 predict_tokens_list = []
-                for _, item in enumerate(tqdm(test)):
+                for _, item in enumerate(tqdm(test_loader)):
                     images, captions = item["image"].to(self.device), item["caption_ids"].to(self.device)
 
                     output = self.model(images, captions[:,:-1])
@@ -64,7 +65,7 @@ class Test_Task:
 
                     epoch_loss += loss.item()
 
-                test_loss = epoch_loss / len(test)
+                test_loss = epoch_loss / len(test_loader)
 
                 print(f"Test loss: {test_loss:.5f}")
 
