@@ -9,5 +9,5 @@ This Example use `flickr8k` dataset.
 To train the Image Captioning model, use the command line:
 
 ``bash
-python train.py --config config.yaml
+python main.py --config config.yaml
 ``
