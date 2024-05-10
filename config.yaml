@@ -1,0 +1,19 @@
+data:
+  txt_file: /content/captions.txt
+  iamge_path: /content/Images
+
+text_embedding:
+  embedding_dim: 256 
+  max_length: 50
+
+model:
+  hidden_size: 512
+  num_layers: 2
+
+# dropout: 0.5
+patience: 5
+learning_rate: 0.001
+num_epochs: 5
+seed: 42
+# batch_size: 128
+save_path: ./checkpoint
